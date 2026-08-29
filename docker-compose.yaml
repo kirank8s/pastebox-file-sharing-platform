@@ -1,0 +1,90 @@
+services:
+
+# Database Tier - MongoDB
+  mongodb:
+    image: mongo:8
+    container_name: pastebox-mongodb
+
+    restart: unless-stopped
+
+    ports:
+      - "27017:27017"
+
+    volumes:
+      - mongodb_data:/data/db
+
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+    networks:
+      - pastebox-network
+
+  # Application Tier - Node.js + Express 
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+
+    container_name: pastebox-server
+
+    restart: unless-stopped
+
+    ports:
+      - "6600:6600"
+
+    environment:
+      PORT: 6600
+      NODE_ENV: production
+
+      # MongoDB service name inside Docker network
+      MONGODB_URL: mongodb://mongodb:27017/pastebox
+
+      SERVER_URL: http://localhost:6600/api/files
+      CLIENT_URL: http://localhost:5173
+
+    depends_on:
+      mongodb:
+        condition: service_healthy
+
+    networks:
+      - pastebox-network
+
+
+  # Presentation Tier - React + Vite
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+
+    container_name: pastebox-client
+
+    restart: unless-stopped
+
+    ports:
+      - "5173:5173"
+
+    depends_on:
+      - server
+
+    networks:
+      - pastebox-network
+
+
+# ============================================
+# Persistent Storage
+# ============================================
+volumes:
+  mongodb_data:
+
+
+# ============================================
+# Application Network
+# ============================================
+networks:
+  pastebox-network:
+    driver: bridge
