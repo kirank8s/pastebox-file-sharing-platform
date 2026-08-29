@@ -98,7 +98,7 @@ Live Demo (Coming Soon) | Powered by MERN + AWS
 
 > _The structure image above shows the separation of the React frontend (`client/`) and Node.js backend (`server/`), including components, routes, controllers, models, and config folders._
 
-https://github.com/kirank8s/pastebox-file-sharing-platform/blob/6476e42d32eb8b24dd7902f34ce2056705739b9b/System%20Design.jpg
+![Project Structure](./client/src/assets/structure.png)
 ---
 
 ## ⚙️ Installation & Running Locally
