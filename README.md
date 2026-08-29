@@ -98,6 +98,8 @@ Live Demo (Coming Soon) | Powered by MERN + AWS
 
 > _The structure image above shows the separation of the React frontend (`client/`) and Node.js backend (`server/`), including components, routes, controllers, models, and config folders._
 
+<img width="966" height="642" alt="image" src="https://github.com/user-attachments/assets/1c3069ee-7a63-48f7-a817-b0f2b70c861b" />
+
 ![Project Structure](./client/src/assets/System Design.jpg)
 ---
 
