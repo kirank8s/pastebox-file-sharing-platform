@@ -100,7 +100,7 @@ Live Demo (Coming Soon) | Powered by MERN + AWS
 
 <img width="966" height="642" alt="image" src="https://github.com/user-attachments/assets/1c3069ee-7a63-48f7-a817-b0f2b70c861b" />
 
-![Project Structure](./client/src/assets/System Design.jpg)
+The System Design depicts the flow of data in three tier architecture.
 ---
 
 ## ⚙️ Installation & Running Locally
