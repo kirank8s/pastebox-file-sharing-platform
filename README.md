@@ -111,7 +111,7 @@ Live Demo (Coming Soon) | Powered by MERN + AWS
 ### 🧑‍💻 1. Clone the repository
 
 ```bash
-git clone https://github.com/PrinceInScripts/Share-Pod-File-Sharing-Application
+
 
 cd client
 npm install
